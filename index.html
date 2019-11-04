@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Story of The Netherlands</title>
+<link rel="stylesheet" type="text/css" href="./screen.css" />
+<script src="./js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="./js/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+<script src="./js/things.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18457713-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+
+    function storePos(id, x, y, zorder) {
+        $.getJSON("admin/storepos.php", { x: x, y: y, id:id, zorder:zorder  }, function(data) {
+
+            if(data.status != 'ok') {
+                alert('Error storing order in DB');
+            } else {
+                
+            }
+
+        });
+
+    }
+
+    $(document).ready( function() {
+
+
+       if($.browser.msie && $.browser.version <= 7 ) {
+           alert('We are sorry but your browser isn\'t supported.');
+       }
+
+		$('iframe').each(function() {
+
+			i = $(this);
+			i.css('left', '1030px')
+		});
+
+        max = 1;
+        $('.poster').each(function(){
+            z = parseInt($(this).css('z-index'));
+            if(z > max) {
+                max = z;
+            }
+        });
+
+        $('.thesubmit a').bind('click', function(e) {
+            e.preventDefault();
+            $('.thesubmit a').css('opacity','0.2');
+
+
+            ddd = { question: $('#question').val(), email: $('#email').val(), name:$('#name').val() };
+              
+            $.getJSON("emailquestion.php", ddd, function(data) {
+
+                if(data.status != 'ok') {
+                    alert('We are sorry, there was an error while sending your question. Try emailing it to info@storyofthenetherlands.com');
+                } else {
+                    alert('Your question has been sent')
+                }
+
+                $('.thesubmit a').css('opacity','1');
+
+            });
+        })
+
+        $('#debug').bind('click', function() {
+            $('#debug').text('');
+        });
+
+        $('a[href^="http://"]').attr("target", "_blank");
+
+        $('.poster').draggable({
+            start: function() {
+                $(this).css('z-index', ++max);
+                
+            },
+            stop: function() {
+                pid = ($(this).attr('pid'));
+                x = parseInt($(this).css('left'));
+                y = parseInt($(this).css('top'));
+                zorder = $(this).css('z-index');
+
+                storePos(pid, x, y, zorder);
+                
+            }
+        }).bind('click', function() {
+            $(this).css('z-index', ++max);
+                pid = ($(this).attr('pid'));
+                x = parseInt($(this).css('left'));
+                y = parseInt($(this).css('top'));
+                zorder = $(this).css('z-index');
+
+                storePos(pid, x, y, zorder);
+        });
+
+        /*
+        t = 20;
+        l = 740;
+        $('.poster').each(function(){
+            $(this).css('top', t);
+            $(this).css('left', l);
+            t+=120;
+            l+=4;
+        });
+        */
+
+       $('.link').bind('click', function(e) {
+           e.preventDefault();
+           
+           id = $(this).attr('href');
+           $.scrollTo($('#'+id), 200, {offset: {left: 0, top:-30}, axis:'y'});
+
+       })
+
+        $('.poster').bind('click', function() {
+            //alert(1)
+        });
+
+
+
+
+    });
+
+</script>
+</head>
+
+<body>
+    <div id="debug">
+        Debug:
+    </div>
+    
+            
+    <div id="container">
+
+        
+
+        
+            <div id="content">
+                
+                
+                    <div class="project" pid="67" projectwidth="210" projectheight="334">
+                        
+                        <div class="video hidden" style="width:210px; height:297px;" ww="210" hh="297">
+                            <div class="videocontainer">
+                                                            </div>
+                        </div>
+
+                        
+                                                        <div class="poster" pid ="978" id="poster_978" caption="" style="top:127px;left:527px;z-index:2253;">
+                                                                        <img alt="" src="./image/posters/Watch video2.jpeg_tn/fp.jpg" zoom="./image/posters/Watch video2.jpeg_tn/zoom.jpg" width="210" w="210" height="297" h="297" />
+                                    <div class="caption"></div>
+                                </div>
+                                                         <div class="poster" pid ="875" id="poster_875" caption="Arnon Grunberg" style="top:942px;left:778px;z-index:2123;">
+                                                                        <img alt="" src="./image/posters/Question_Arnon-Grunberg.jpg_tn/fp.jpg" zoom="./image/posters/Question_Arnon-Grunberg.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Arnon Grunberg</div>
+                                </div>
+                                                         <div class="poster" pid ="876" id="poster_876" caption="Heleen Mees " style="top:4408px;left:525px;z-index:2241;">
+                                                                        <img alt="" src="./image/posters/Question_Heleen-Mees.jpg_tn/fp.jpg" zoom="./image/posters/Question_Heleen-Mees.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Heleen Mees </div>
+                                </div>
+                                                         <div class="poster" pid ="877" id="poster_877" caption="Klaus de Rijk " style="top:5370px;left:1003px;z-index:2218;">
+                                                                        <img alt="" src="./image/posters/Question_Klaus-de-Rijk-.jpg_tn/fp.jpg" zoom="./image/posters/Question_Klaus-de-Rijk-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Klaus de Rijk </div>
+                                </div>
+                                                         <div class="poster" pid ="878" id="poster_878" caption="James Boekbinder" style="top:2831px;left:1205px;z-index:2202;">
+                                                                        <img alt="" src="./image/posters/Question_James-Boekbinder.jpg_tn/fp.jpg" zoom="./image/posters/Question_James-Boekbinder.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">James Boekbinder</div>
+                                </div>
+                                                         <div class="poster" pid ="879" id="poster_879" caption="Jerome Symons" style="top:2984px;left:439px;z-index:2187;">
+                                                                        <img alt="" src="./image/posters/Question_Jerome-Symons.jpg_tn/fp.jpg" zoom="./image/posters/Question_Jerome-Symons.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Jerome Symons</div>
+                                </div>
+                                                         <div class="poster" pid ="873" id="poster_873" caption="Janneke Wesseling" style="top:1821px;left:782px;z-index:2232;">
+                                                                        <img alt="" src="./image/posters/Question_Janneke-Wesseling.jpg_tn/fp.jpg" zoom="./image/posters/Question_Janneke-Wesseling.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Janneke Wesseling</div>
+                                </div>
+                                                         <div class="poster" pid ="881" id="poster_881" caption="Henrik Spoon" style="top:3217px;left:1070px;z-index:2205;">
+                                                                        <img alt="" src="./image/posters/Question_Henrik-Spoon.jpg_tn/fp.jpg" zoom="./image/posters/Question_Henrik-Spoon.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Henrik Spoon</div>
+                                </div>
+                                                         <div class="poster" pid ="880" id="poster_880" caption="Eduard van Hulsen" style="top:4186px;left:577px;z-index:1022;">
+                                                                        <img alt="" src="./image/posters/Question_Eduard-van-Hulsen.jpg_tn/fp.jpg" zoom="./image/posters/Question_Eduard-van-Hulsen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Eduard van Hulsen</div>
+                                </div>
+                                                         <div class="poster" pid ="874" id="poster_874" caption="Joost Taverne" style="top:2735px;left:60px;z-index:1026;">
+                                                                        <img alt="" src="./image/posters/Question_Joost-Taverne.jpg_tn/fp.jpg" zoom="./image/posters/Question_Joost-Taverne.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Joost Taverne</div>
+                                </div>
+                                                         <div class="poster" pid ="871" id="poster_871" caption="Armand Mevis" style="top:3274px;left:175px;z-index:1354;">
+                                                                        <img alt="" src="./image/posters/Question_Armand-Mevis.jpg_tn/fp.jpg" zoom="./image/posters/Question_Armand-Mevis.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Armand Mevis</div>
+                                </div>
+                                                         <div class="poster" pid ="872" id="poster_872" caption="Sandra Boer" style="top:3310px;left:556px;z-index:2208;">
+                                                                        <img alt="" src="./image/posters/Question_Sandra-Boer.jpg_tn/fp.jpg" zoom="./image/posters/Question_Sandra-Boer.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Sandra Boer</div>
+                                </div>
+                                                         <div class="poster" pid ="882" id="poster_882" caption="Christiaan Houtenbos" style="top:5244px;left:275px;z-index:1598;">
+                                                                        <img alt="" src="./image/posters/Question_Christiaan Houtenbos.jpg_tn/fp.jpg" zoom="./image/posters/Question_Christiaan Houtenbos.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Christiaan Houtenbos</div>
+                                </div>
+                                                         <div class="poster" pid ="883" id="poster_883" caption="Cor Jaring" style="top:2450px;left:298px;z-index:2236;">
+                                                                        <img alt="" src="./image/posters/Question_Cor-Jaring.jpg_tn/fp.jpg" zoom="./image/posters/Question_Cor-Jaring.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Cor Jaring</div>
+                                </div>
+                                                         <div class="poster" pid ="884" id="poster_884" caption="Bonno van Doorn" style="top:1748px;left:50px;z-index:2260;">
+                                                                        <img alt="" src="./image/posters/Question_Bonno-van-Doorn.jpg_tn/fp.jpg" zoom="./image/posters/Question_Bonno-van-Doorn.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Bonno van Doorn</div>
+                                </div>
+                                                         <div class="poster" pid ="885" id="poster_885" caption="Lily van der Stokker" style="top:3543px;left:1065px;z-index:2207;">
+                                                                        <img alt="" src="./image/posters/Question_Lily van der Stokker.jpg_tn/fp.jpg" zoom="./image/posters/Question_Lily van der Stokker.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Lily van der Stokker</div>
+                                </div>
+                                                         <div class="poster" pid ="886" id="poster_886" caption="Jan Pel " style="top:4517px;left:341px;z-index:1106;">
+                                                                        <img alt="" src="./image/posters/Question_JanPel.jpg_tn/fp.jpg" zoom="./image/posters/Question_JanPel.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Jan Pel </div>
+                                </div>
+                                                         <div class="poster" pid ="887" id="poster_887" caption="Maarten van Rossum" style="top:1416px;left:759px;z-index:2174;">
+                                                                        <img alt="" src="./image/posters/Question_Maarten-van-Rossum.jpg_tn/fp.jpg" zoom="./image/posters/Question_Maarten-van-Rossum.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Maarten van Rossum</div>
+                                </div>
+                                                         <div class="poster" pid ="888" id="poster_888" caption="Marianne Theunissen" style="top:3938px;left:170px;z-index:1110;">
+                                                                        <img alt="" src="./image/posters/Question_Marianne-Theunissen.jpg_tn/fp.jpg" zoom="./image/posters/Question_Marianne-Theunissen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Marianne Theunissen</div>
+                                </div>
+                                                         <div class="poster" pid ="890" id="poster_890" caption="Nadya Yassievich" style="top:6262px;left:466px;z-index:2116;">
+                                                                        <img alt="" src="./image/posters/Question_Nadya-Yassievich-.jpg_tn/fp.jpg" zoom="./image/posters/Question_Nadya-Yassievich-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Nadya Yassievich</div>
+                                </div>
+                                                         <div class="poster" pid ="891" id="poster_891" caption="Neil van der Linden" style="top:5098px;left:20px;z-index:1496;">
+                                                                        <img alt="" src="./image/posters/Question_Neil-van-der-Linden.jpg_tn/fp.jpg" zoom="./image/posters/Question_Neil-van-der-Linden.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Neil van der Linden</div>
+                                </div>
+                                                         <div class="poster" pid ="892" id="poster_892" caption="Oscar van Gelderen" style="top:3617px;left:596px;z-index:2189;">
+                                                                        <img alt="" src="./image/posters/Question_Oscar-van-Gelderen.jpg_tn/fp.jpg" zoom="./image/posters/Question_Oscar-van-Gelderen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Oscar van Gelderen</div>
+                                </div>
+                                                         <div class="poster" pid ="893" id="poster_893" caption="Paul Mertz " style="top:3759px;left:350px;z-index:1071;">
+                                                                        <img alt="" src="./image/posters/Question_Paul-Mertz.jpg_tn/fp.jpg" zoom="./image/posters/Question_Paul-Mertz.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Paul Mertz </div>
+                                </div>
+                                                         <div class="poster" pid ="894" id="poster_894" caption="Paul van de Berg" style="top:5105px;left:811px;z-index:2216;">
+                                                                        <img alt="" src="./image/posters/Question_Paul-van-de-Berg.jpg_tn/fp.jpg" zoom="./image/posters/Question_Paul-van-de-Berg.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Paul van de Berg</div>
+                                </div>
+                                                         <div class="poster" pid ="895" id="poster_895" caption="Raymond van den Boogaard " style="top:3565px;left:765px;z-index:1033;">
+                                                                        <img alt="" src="./image/posters/Question_Raymond-van-den-Boogaard.jpg_tn/fp.jpg" zoom="./image/posters/Question_Raymond-van-den-Boogaard.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Raymond van den Boogaard </div>
+                                </div>
+                                                         <div class="poster" pid ="896" id="poster_896" caption="Renee van Marissing" style="top:2294px;left:1374px;z-index:2246;">
+                                                                        <img alt="" src="./image/posters/Question_Renee-van-Marissing-.jpg_tn/fp.jpg" zoom="./image/posters/Question_Renee-van-Marissing-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Renee van Marissing</div>
+                                </div>
+                                                         <div class="poster" pid ="897" id="poster_897" caption="Fucking Good Art Magazine" style="top:3641px;left:44px;z-index:1021;">
+                                                                        <img alt="" src="./image/posters/Question_Rob-en-Nienke.jpg_tn/fp.jpg" zoom="./image/posters/Question_Rob-en-Nienke.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Fucking Good Art Magazine</div>
+                                </div>
+                                                         <div class="poster" pid ="898" id="poster_898" caption="Russell Shorto " style="top:2152px;left:1075px;z-index:2244;">
+                                                                        <img alt="" src="./image/posters/Question_Russel-Shorto.jpg_tn/fp.jpg" zoom="./image/posters/Question_Russel-Shorto.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Russell Shorto </div>
+                                </div>
+                                                         <div class="poster" pid ="899" id="poster_899" caption="Sohrab Bayat" style="top:4475px;left:62px;z-index:1443;">
+                                                                        <img alt="" src="./image/posters/Question_Sorhab-Bayat.jpg_tn/fp.jpg" zoom="./image/posters/Question_Sorhab-Bayat.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Sohrab Bayat</div>
+                                </div>
+                                                         <div class="poster" pid ="900" id="poster_900" caption="Tamara Sterman " style="top:4267px;left:1280px;z-index:2210;">
+                                                                        <img alt="" src="./image/posters/Question_Tamara-Sterman-.jpg_tn/fp.jpg" zoom="./image/posters/Question_Tamara-Sterman-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Tamara Sterman </div>
+                                </div>
+                                                         <div class="poster" pid ="901" id="poster_901" caption="Tunc Topcoglu" style="top:2487px;left:1511px;z-index:2245;">
+                                                                        <img alt="" src="./image/posters/Question_Tunc-Topcoglu-.jpg_tn/fp.jpg" zoom="./image/posters/Question_Tunc-Topcoglu-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Tunc Topcoglu</div>
+                                </div>
+                                                         <div class="poster" pid ="902" id="poster_902" caption="Willem Schinkel" style="top:5506px;left:1291px;z-index:2222;">
+                                                                        <img alt="" src="./image/posters/Question_Willem-van-Schinkel.jpg_tn/fp.jpg" zoom="./image/posters/Question_Willem-van-Schinkel.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Willem Schinkel</div>
+                                </div>
+                                                         <div class="poster" pid ="903" id="poster_903" caption="WJM Kok" style="top:3091px;left:42px;z-index:874;">
+                                                                        <img alt="" src="./image/posters/Question_WJM-Kok-.jpg_tn/fp.jpg" zoom="./image/posters/Question_WJM-Kok-.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">WJM Kok</div>
+                                </div>
+                                                         <div class="poster" pid ="904" id="poster_904" caption="Yoeri Meessen" style="top:3946px;left:406px;z-index:1021;">
+                                                                        <img alt="" src="./image/posters/Question_Yoeri-Meessen.jpg_tn/fp.jpg" zoom="./image/posters/Question_Yoeri-Meessen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Yoeri Meessen</div>
+                                </div>
+                                                         <div class="poster" pid ="909" id="poster_909" caption="Michiel Vos" style="top:3175px;left:1525px;z-index:2204;">
+                                                                        <img alt="" src="./image/posters/Question_Michiel-Vos.jpg_tn/fp.jpg" zoom="./image/posters/Question_Michiel-Vos.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Michiel Vos</div>
+                                </div>
+                                                         <div class="poster" pid ="910" id="poster_910" caption="Alexandra Onderwater" style="top:2010px;left:678px;z-index:1833;">
+                                                                        <img alt="" src="./image/posters/Question_Alexandra-Onderwater.jpg_tn/fp.jpg" zoom="./image/posters/Question_Alexandra-Onderwater.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Alexandra Onderwater</div>
+                                </div>
+                                                         <div class="poster" pid ="911" id="poster_911" caption="Carel Storm van 's Gravesande" style="top:3493px;left:251px;z-index:1355;">
+                                                                        <img alt="" src="./image/posters/Question_Carel-Storm-van-s-Gravesande.jpg_tn/fp.jpg" zoom="./image/posters/Question_Carel-Storm-van-s-Gravesande.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Carel Storm van 's Gravesande</div>
+                                </div>
+                                                         <div class="poster" pid ="912" id="poster_912" caption="Freyja van den Tree" style="top:2445px;left:22px;z-index:2233;">
+                                                                        <img alt="" src="./image/posters/Question_Freyja-van-den-Tree.jpg_tn/fp.jpg" zoom="./image/posters/Question_Freyja-van-den-Tree.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Freyja van den Tree</div>
+                                </div>
+                                                         <div class="poster" pid ="913" id="poster_913" caption=" Harold Horsman" style="top:5190px;left:545px;z-index:1305;">
+                                                                        <img alt="" src="./image/posters/Question_Harold-Horsman.jpg_tn/fp.jpg" zoom="./image/posters/Question_Harold-Horsman.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption"> Harold Horsman</div>
+                                </div>
+                                                         <div class="poster" pid ="914" id="poster_914" caption="Jan van Asbeck" style="top:6047px;left:130px;z-index:2118;">
+                                                                        <img alt="" src="./image/posters/Question_Jan-van-Asbeck.jpg_tn/fp.jpg" zoom="./image/posters/Question_Jan-van-Asbeck.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Jan van Asbeck</div>
+                                </div>
+                                                         <div class="poster" pid ="915" id="poster_915" caption="Maggie Kelly" style="top:2830px;left:959px;z-index:2203;">
+                                                                        <img alt="" src="./image/posters/Question_Maggie-Kelly.jpg_tn/fp.jpg" zoom="./image/posters/Question_Maggie-Kelly.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Maggie Kelly</div>
+                                </div>
+                                                         <div class="poster" pid ="916" id="poster_916" caption="Maja" style="top:4112px;left:49px;z-index:1112;">
+                                                                        <img alt="" src="./image/posters/Question_Maja.jpg_tn/fp.jpg" zoom="./image/posters/Question_Maja.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Maja</div>
+                                </div>
+                                                         <div class="poster" pid ="917" id="poster_917" caption="Marco Walser" style="top:2557px;left:450px;z-index:2235;">
+                                                                        <img alt="" src="./image/posters/Question_Marco-Walser.jpg_tn/fp.jpg" zoom="./image/posters/Question_Marco-Walser.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Marco Walser</div>
+                                </div>
+                                                         <div class="poster" pid ="918" id="poster_918" caption="Milan van Opmeer" style="top:1602px;left:167px;z-index:2261;">
+                                                                        <img alt="" src="./image/posters/Question_Milan-van-Opmeer.jpg_tn/fp.jpg" zoom="./image/posters/Question_Milan-van-Opmeer.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Milan van Opmeer</div>
+                                </div>
+                                                         <div class="poster" pid ="919" id="poster_919" caption="Moe Houtenbos" style="top:6085px;left:300px;z-index:2117;">
+                                                                        <img alt="" src="./image/posters/Question_Moe-Houtenbos.jpg_tn/fp.jpg" zoom="./image/posters/Question_Moe-Houtenbos.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Moe Houtenbos</div>
+                                </div>
+                                                         <div class="poster" pid ="920" id="poster_920" caption="Reuben Wijnberg" style="top:5819px;left:10px;z-index:1607;">
+                                                                        <img alt="" src="./image/posters/Question_Reuben-Wijnberg.jpg_tn/fp.jpg" zoom="./image/posters/Question_Reuben-Wijnberg.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Reuben Wijnberg</div>
+                                </div>
+                                                         <div class="poster" pid ="921" id="poster_921" caption="Rosa van Goudoever" style="top:3906px;left:1122px;z-index:2209;">
+                                                                        <img alt="" src="./image/posters/Question_Rosa-van-Goudoever.jpg_tn/fp.jpg" zoom="./image/posters/Question_Rosa-van-Goudoever.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Rosa van Goudoever</div>
+                                </div>
+                                                         <div class="poster" pid ="922" id="poster_922" caption="Walid" style="top:4182px;left:289px;z-index:2170;">
+                                                                        <img alt="" src="./image/posters/Question_Walid.jpg_tn/fp.jpg" zoom="./image/posters/Question_Walid.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Walid</div>
+                                </div>
+                                                         <div class="poster" pid ="923" id="poster_923" caption="Willem Pel" style="top:4737px;left:841px;z-index:2217;">
+                                                                        <img alt="" src="./image/posters/Question_Willem-Pel.jpg_tn/fp.jpg" zoom="./image/posters/Question_Willem-Pel.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Willem Pel</div>
+                                </div>
+                                                         <div class="poster" pid ="924" id="poster_924" caption="Roel van Delden" style="top:4690px;left:15px;z-index:1292;">
+                                                                        <img alt="" src="./image/posters/Question_-Roel-van-Delden.jpg_tn/fp.jpg" zoom="./image/posters/Question_-Roel-van-Delden.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Roel van Delden</div>
+                                </div>
+                                                         <div class="poster" pid ="925" id="poster_925" caption="Floris Mreijen" style="top:4281px;left:1032px;z-index:2211;">
+                                                                        <img alt="" src="./image/posters/Question_Floris-Mreijen.jpg_tn/fp.jpg" zoom="./image/posters/Question_Floris-Mreijen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Floris Mreijen</div>
+                                </div>
+                                                         <div class="poster" pid ="926" id="poster_926" caption="Han" style="top:1529px;left:26px;z-index:2259;">
+                                                                        <img alt="" src="./image/posters/Question_Han.jpg_tn/fp.jpg" zoom="./image/posters/Question_Han.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Han</div>
+                                </div>
+                                                         <div class="poster" pid ="927" id="poster_927" caption="Kim Nathalia" style="top:4829px;left:1352px;z-index:2213;">
+                                                                        <img alt="" src="./image/posters/Question_Kim-Nathalia.jpg_tn/fp.jpg" zoom="./image/posters/Question_Kim-Nathalia.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Kim Nathalia</div>
+                                </div>
+                                                         <div class="poster" pid ="928" id="poster_928" caption="Merel van den Berg" style="top:4828px;left:1066px;z-index:2214;">
+                                                                        <img alt="" src="./image/posters/Question_Merel-van-den-Berg.jpg_tn/fp.jpg" zoom="./image/posters/Question_Merel-van-den-Berg.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Merel van den Berg</div>
+                                </div>
+                                                         <div class="poster" pid ="930" id="poster_930" caption="Sohrab" style="top:4387px;left:767px;z-index:2212;">
+                                                                        <img alt="" src="./image/posters/Question_Sohrab.jpg_tn/fp.jpg" zoom="./image/posters/Question_Sohrab.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Sohrab</div>
+                                </div>
+                                                         <div class="poster" pid ="931" id="poster_931" caption="Samuel BÃ¤nzinger" style="top:3308px;left:39px;z-index:1353;">
+                                                                        <img alt="" src="./image/posters/Question_Samuel-Baenzinger.jpg_tn/fp.jpg" zoom="./image/posters/Question_Samuel-Baenzinger.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Samuel BÃ¤nzinger</div>
+                                </div>
+                                                         <div class="poster" pid ="932" id="poster_932" caption="Iva Supic Jankovic" style="top:5430px;left:640px;z-index:1505;">
+                                                                        <img alt="" src="./image/posters/iva-supic-jankovic.jpg_tn/fp.jpg" zoom="./image/posters/iva-supic-jankovic.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Iva Supic Jankovic</div>
+                                </div>
+                                                         <div class="poster" pid ="933" id="poster_933" caption="MeRy" style="top:5929px;left:445px;z-index:1615;">
+                                                                        <img alt="" src="./image/posters/MeRy.jpg_tn/fp.jpg" zoom="./image/posters/MeRy.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">MeRy</div>
+                                </div>
+                                                         <div class="poster" pid ="934" id="poster_934" caption="Milan van Opmeer" style="top:5618px;left:137px;z-index:1537;">
+                                                                        <img alt="" src="./image/posters/Milan-van-Opmeer-02.jpg_tn/fp.jpg" zoom="./image/posters/Milan-van-Opmeer-02.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Milan van Opmeer</div>
+                                </div>
+                                                         <div class="poster" pid ="935" id="poster_935" caption="Bregje Pel" style="top:2879px;left:173px;z-index:2157;">
+                                                                        <img alt="" src="./image/posters/Bregje-Pel.jpg_tn/fp.jpg" zoom="./image/posters/Bregje-Pel.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Bregje Pel</div>
+                                </div>
+                                                         <div class="poster" pid ="936" id="poster_936" caption="Johan ThermÃ¦nius" style="top:1081px;left:655px;z-index:2173;">
+                                                                        <img alt="" src="./image/posters/Johan-ThermÃ¦nius.jpg_tn/fp.jpg" zoom="./image/posters/Johan-ThermÃ¦nius.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Johan ThermÃ¦nius</div>
+                                </div>
+                                                         <div class="poster" pid ="937" id="poster_937" caption="Mischa Rus" style="top:3970px;left:797px;z-index:1784;">
+                                                                        <img alt="" src="./image/posters/Mischa-Rus.jpg_tn/fp.jpg" zoom="./image/posters/Mischa-Rus.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Mischa Rus</div>
+                                </div>
+                                                         <div class="poster" pid ="938" id="poster_938" caption="Jens Buss" style="top:565px;left:131px;z-index:2224;">
+                                                                        <img alt="" src="./image/posters/Jens-Buss.jpg_tn/fp.jpg" zoom="./image/posters/Jens-Buss.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Jens Buss</div>
+                                </div>
+                                                         <div class="poster" pid ="939" id="poster_939" caption="Serena Janssen" style="top:5346px;left:44px;z-index:1498;">
+                                                                        <img alt="" src="./image/posters/Serena-Janssen.jpg_tn/fp.jpg" zoom="./image/posters/Serena-Janssen.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Serena Janssen</div>
+                                </div>
+                                                         <div class="poster" pid ="940" id="poster_940" caption="Gijs Frieling" style="top:275px;left:646px;z-index:2251;">
+                                                                        <img alt="" src="./image/posters/Gijs-Frieling.jpg_tn/fp.jpg" zoom="./image/posters/Gijs-Frieling.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Gijs Frieling</div>
+                                </div>
+                                                         <div class="poster" pid ="941" id="poster_941" caption="Martijn" style="top:2416px;left:743px;z-index:2239;">
+                                                                        <img alt="" src="./image/posters/Martijn.jpg_tn/fp.jpg" zoom="./image/posters/Martijn.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Martijn</div>
+                                </div>
+                                                         <div class="poster" pid ="942" id="poster_942" caption="Nina" style="top:4782px;left:615px;z-index:2215;">
+                                                                        <img alt="" src="./image/posters/Nina.jpg_tn/fp.jpg" zoom="./image/posters/Nina.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Nina</div>
+                                </div>
+                                                         <div class="poster" pid ="943" id="poster_943" caption="Rob Houtenbos" style="top:6038px;left:713px;z-index:1638;">
+                                                                        <img alt="" src="./image/posters/Rob-Houtenbos.jpg_tn/fp.jpg" zoom="./image/posters/Rob-Houtenbos.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Rob Houtenbos</div>
+                                </div>
+                                                         <div class="poster" pid ="944" id="poster_944" caption="T.Martinus" style="top:5650px;left:793px;z-index:2220;">
+                                                                        <img alt="" src="./image/posters/T.Martinus.jpg_tn/fp.jpg" zoom="./image/posters/T.Martinus.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">T.Martinus</div>
+                                </div>
+                                                         <div class="poster" pid ="945" id="poster_945" caption="Barend Schipper" style="top:417px;left:12px;z-index:2225;">
+                                                                        <img alt="" src="./image/posters/Barend-Schipper.jpg_tn/fp.jpg" zoom="./image/posters/Barend-Schipper.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Barend Schipper</div>
+                                </div>
+                                                         <div class="poster" pid ="946" id="poster_946" caption="Hugo van Dijk" style="top:3039px;left:802px;z-index:2240;">
+                                                                        <img alt="" src="./image/posters/Hugo-van-Dijk.jpg_tn/fp.jpg" zoom="./image/posters/Hugo-van-Dijk.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Hugo van Dijk</div>
+                                </div>
+                                                         <div class="poster" pid ="947" id="poster_947" caption="Latitude Sul" style="top:5709px;left:995px;z-index:2219;">
+                                                                        <img alt="" src="./image/posters/Latitude-Sul.jpg_tn/fp.jpg" zoom="./image/posters/Latitude-Sul.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Latitude Sul</div>
+                                </div>
+                                                         <div class="poster" pid ="948" id="poster_948" caption="Octavio James" style="top:3888px;left:72px;z-index:1721;">
+                                                                        <img alt="" src="./image/posters/Octavio-James.jpg_tn/fp.jpg" zoom="./image/posters/Octavio-James.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Octavio James</div>
+                                </div>
+                                                         <div class="poster" pid ="949" id="poster_949" caption="Rifko Meijer" style="top:5128px;left:1163px;z-index:2221;">
+                                                                        <img alt="" src="./image/posters/Rifko-Meijer.jpg_tn/fp.jpg" zoom="./image/posters/Rifko-Meijer.jpg_tn/zoom.jpg" width="209" w="209" height="297" h="297" />
+                                    <div class="caption">Rifko Meijer</div>
+                                </div>
+                         
+
+
+                        
+
+                        <div class="description">
+                        <div class="menu r">
+<a href="about" class="link">About</a><br>
+<a href="background" class="link">Background</a><br>
+<a href="contact" class="link">Contact</a><br>
+</div>
+<img id="thelogo" src="title.gif" height="127" width="484">
+
+
+
+
+<div class="intro block l">
+7. October 2010 <br>
+Moderated by Arnon Grunberg<br>
+Witzenhausen Gallery, NY<br>
+<br>
+For video please scroll to the right<br>
+<br>
+Submit your question<a href="f1" class="link exp">1</a> (closed)<br>
+</div>
+
+<img src="line.gif" style="position: absolute; top: 194px; left: 774px; z-index: 1;">
+<div class="theform r">
+<form>
+<label for="name">Name</label>
+ &nbsp;<input name="name" id="name" type="input">
+ &nbsp;<br>
+ &nbsp;<label for="email">E-Mail</label>
+ &nbsp;<input name="email" id="email" type="input">
+ &nbsp;<br>
+ &nbsp;<label for="question">Question<a href="f1" class="link exp">1</a></label>
+ &nbsp;<textarea id="question"></textarea>
+ &nbsp;<div class="thesubmit"><a href="#">Send</a></div>
+</form>
+</div>
+
+<div class="block r" id="about">
+<u>About</u><br><br>
+
+<p>On 7th of October 2010, four Dutch professionals, living in New York, talked with writer Arnon Grunberg about their life abroad and their experience with identity and nationality. Invited talk show guests were Pascale Gatzen, Boris Kwantes, Heleen Mees and Michiel Vos.</p>
+<p>The event is a reaction to the NY400 celebrations<a href="f2" class="link exp">2</a> in New York in 2009 and the recent political developments in the Netherlands. It supports the idea that identity and tradition are not limited to physical borders and that in these days we have to search for positive thoughts with collective power.</p>
+<p>The conversations took place in front of a live audience and were video recorded. An edited version of the talk show will be made public on this website in November 2010.</p>
+</div>
+
+<div class="block l" id="background">
+<u>Background</u><br><br>
+<p>In 2009 the Dutch government organized a series of events in New York City to commemorate 400 years of Dutch-New York relations.<a href="f2" class="link exp">2</a> Many of these events showed stereotypical images of the Netherlands, finding a peak in the touristic 'New Amsterdam Village' in Manhattan, where one could buy herring and cheese. The scheduled highlight of NY400 was the visit of Princess MÃ¡xima and Prince Willem-Alexander, a two-week showcase of the couple in New York, with a mainly Dutch audience escorting their celebration agenda.
+Considering this representation of the Netherlands in New York and looking at the current situation in the Netherlands, with its increase of nationalistic and populist thoughts, we have to ask ourselves:
+<br>What are the topics and images that we identify with and we are longing for? </p>
+<p>Answers to this questions were searched for by Michiel Vos, journalist and HBO filmmaker with both, Dutch and American nationality; Pascale Gatzen, coordinator of the Fashion Area of Study in the 'Integrated Design' program at Parsons The New School for Design; Boris Kwantes, head of ABN AMRO operations in the United States and Heleen Mees, economist and columnist, writing for international magazines and NRC Handelsblad.</p><p>The show was moderated by writer Arnon Grunberg, working and living in New York, whose provocative and witty novels are translated into 24 languages.</p>
+</div>
+
+
+<div class="block r" id="contact">
+<u>Contact</u><br><br>
+info@storyofthenetherlands.com<br>
+<br>
+Concept and organization:<br>
+Claudia Doms and Eva Pel<br>
+<br>
+Supported by:<br>
+Witzenhausen Gallery, Going Dutch foundation, Aperture foundation, Consulate General of the Netherlands in New York <br>
+
+<br>
+Website: <br>
+Joel Galvez & Claudia Doms<br>
+<br>
+Posters:<br>
+Claudia Doms<br>
+
+<br>
+Witzenhausen Gallery<br>
+547 West 27th Street, Suite 530<br>
+New York, NY 10001<br>
+
+</div>
+
+<div class="block l" id="footnotes">
+
+<div id="f1" class="exp">1.</div>
+You can be part of the project by sending us your question. Any question which you find unanswered, be it personal or political, concrete or abstract. Your question will be published on this website.
+<br><br>
+<div id="f2" class="exp">2.</div>
+The book 'Observations of a Celebration', Eva Pel's conclusion of her fieldwork in New York during the Summer of 2009, can be ordered by sending an e-mail to info@storyofthenetherlands.com or through the <a href="http://www.abc.nl/search/detailed.php?isbn=9789081496513&amp;valuta=g">American Book Center</a>. Includes interviews with former Minister for European Affairs Frans Timmermans, urban shaman Donna Henes, historian Roger Panetta, architect Ben van Berkel and art collector George Way among others.
+
+</div>                        </div>
+                    </div>
+                
+                    <div class="project" pid="68" projectwidth="450" projectheight="380">
+                        
+                        <div class="video" style="width:700px; height:394px;" ww="700" hh="394">
+                            <div class="videocontainer">
+                                <iframe src="http://player.vimeo.com/video/17234109?title=0&amp;byline=0&amp;portrait=0" width="700" height="394" frameborder="0"></iframe>                            </div>
+                        </div>
+
+                        
+                        
+
+
+                        
+
+                        <div class="description">
+                                                </div>
+                    </div>
+                
+                    <div class="project" pid="69" projectwidth="450" projectheight="380">
+                        
+                        <div class="video" style="width:700px; height:394px;" ww="700" hh="394">
+                            <div class="videocontainer">
+                                <iframe src="http://player.vimeo.com/video/17224116?title=0&amp;byline=0&amp;portrait=0" width="700" height="394" frameborder="0"></iframe>                            </div>
+                        </div>
+
+                        
+                        
+
+
+                        
+
+                        <div class="description">
+                                                </div>
+                    </div>
+                
+                    <div class="project" pid="70" projectwidth="450" projectheight="380">
+                        
+                        <div class="video" style="width:700px; height:394px;" ww="700" hh="394">
+                            <div class="videocontainer">
+                                <iframe src="http://player.vimeo.com/video/17224910?title=0&amp;byline=0&amp;portrait=0" width="700" height="394" frameborder="0"></iframe>                            </div>
+                        </div>
+
+                        
+                        
+
+
+                        
+
+                        <div class="description">
+                                                </div>
+                    </div>
+                
+                    <div class="project" pid="71" projectwidth="450" projectheight="380">
+                        
+                        <div class="video" style="width:700px; height:394px;" ww="700" hh="394">
+                            <div class="videocontainer">
+                                <iframe src="http://player.vimeo.com/video/17227244?title=0&amp;byline=0&amp;portrait=0" width="700" height="394" frameborder="0"></iframe>                            </div>
+                        </div>
+
+                        
+                        
+
+
+                        
+
+                        <div class="description">
+                                                </div>
+                    </div>
+                
+                    <div class="project" pid="72" projectwidth="450" projectheight="380">
+                        
+                        <div class="video" style="width:700px; height:394px;" ww="700" hh="394">
+                            <div class="videocontainer">
+                                <iframe src="http://player.vimeo.com/video/17227405?title=0&amp;byline=0&amp;portrait=0" width="700" height="394" frameborder="0"></iframe>                            </div>
+                        </div>
+
+                        
+                        
+
+
+                        
+
+                        <div class="description">
+                                                </div>
+                    </div>
+                
+            </div>
+        
+    </div><!-- container -->
+
+    <div id="bottom" class="menu">
+
+    </div>
+    
+</body>
+</html>
+
